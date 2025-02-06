@@ -16,6 +16,8 @@ export function healthStatus(character) {
     }
 };
 
+module.exports = healthStatus;
+
 // console.log(healthStatus(character1));
 // console.log(healthStatus(character2));
 // console.log(healthStatus(character3));

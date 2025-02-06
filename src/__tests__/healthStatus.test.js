@@ -1,11 +1,18 @@
-import { healthStatus } from '../health_status';
+const healthStatus = require('../health_status');
 
-test('healthStatus', () => {
-    const character1 = { name: 'маг', health: 90 };
-    const character2 = { name: 'лучник', health: 40 };
-    const character3 = { name: 'мечник', health: 10 };
+describe('healthStatus', () => {
+    it('should return "healthy" when health is greater than 50', () => {
+        const character = { name: 'маг', health: 90 };
+        expect(healthStatus(character)).toBe('healthy');
+    });
 
-    expect(healthStatus(character1)).toBe('healthy');   // Здоровье более 50 - зелёный/healthy
-    expect(healthStatus(character2)).toBe('wounded');   // Здоровье от 15 до 50 - жёлтый/wounded
-    expect(healthStatus(character3)).toBe('critical');  // Менее 15 - красный/critical
+    it('should return "wounded" when health is between 15 and 50', () => {
+        const character = { name: 'лучник', health: 40 };
+        expect(healthStatus(character)).toBe('wounded');
+    });
+
+    it('should return "critical" when health is less than 15', () => {
+        const character = { name: 'мечник', health: 10 };
+        expect(healthStatus(character)).toBe('critical');
+    });
 });

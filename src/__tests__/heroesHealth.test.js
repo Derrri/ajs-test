@@ -1,4 +1,4 @@
-import { sortHeroesByHealth } from '../sortHeroesByHealth';
+const sortHeroesByHealth = require('../sortHeroesByHealth');
 
 // Проверяет, правильно ли функция сортирует массив героев по убыванию здоровья
 describe('sortHeroesByHealth', () => {
@@ -15,6 +15,17 @@ describe('sortHeroesByHealth', () => {
             { name: 'лучник', health: 80 },
             { name: 'мечник', health: 10 },
         ]);
+    });
+
+    test('should not modify the original array', () => {
+        const heroes = [
+            { name: 'мечник', health: 10 },
+            { name: 'маг', health: 100 },
+            { name: 'лучник', health: 80 },
+        ];
+        const heroesCopy = [...heroes]; // Копируем оригинальный массив
+        sortHeroesByHealth(heroes);
+        expect(heroes).toEqual(heroesCopy); // Проверяем, что оригинальный массив не изменился
     });
 
     // Проверяет, как функция обрабатывает нескольких героев с одинаковым уровнем здоровья

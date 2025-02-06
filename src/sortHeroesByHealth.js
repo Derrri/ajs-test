@@ -1,6 +1,10 @@
-export function sortHeroesByHealth(heroes) {
-  return heroes.sort((a, b) => b.health - a.health);
+function sortHeroesByHealth(heroes) {
+  const arr = [...heroes];
+  arr.sort((a, b) => b.health - a.health);
+  return arr;
 }
+
+module.exports = sortHeroesByHealth;
 
 // Пример использования
 // const heroes = [
